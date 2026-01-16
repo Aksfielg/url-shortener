@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import {Input} from "@/components/ui/input";
 import {Card} from "./ui/card";
+import {getShortBase} from "@/lib/utils";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import Error from "./error";
@@ -118,7 +119,7 @@ export function CreateLink() {
         />
         {errors.longUrl && <Error message={errors.longUrl} />}
         <div className="flex items-center gap-2">
-          <Card className="p-2">trimrr.in</Card> /
+          <Card className="p-2">{getShortBase().replace(/^https?:\/\//, "")}</Card> /
           <Input
             id="customUrl"
             placeholder="Custom Link (optional)"

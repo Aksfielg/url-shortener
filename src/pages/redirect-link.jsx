@@ -10,23 +10,19 @@ const RedirectLink = () => {
 
   const {loading, data, fn} = useFetch(getLongUrl, id);
 
-  const {loading: loadingStats, fn: fnStats} = useFetch(storeClicks, {
-    id: data?.id,
-    originalUrl: data?.original_url,
-  });
-
   useEffect(() => {
     fn();
   }, []);
 
   useEffect(() => {
     if (!loading && data) {
-      fnStats();
+      // record the click and redirect using the fresh data
+      storeClicks({ id: data.id, originalUrl: data.original_url });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [loading, data]);
 
-  if (loading || loadingStats) {
+  if (loading) {
     return (
       <>
         <BarLoader width={"100%"} color="#36d7b7" />
