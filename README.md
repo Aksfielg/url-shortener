@@ -1,4 +1,4 @@
-# URL Shortener
+# URL Shortener(https://url-shortener-alpha-azure.vercel.app/)
 
 A lightweight URL shortener built with React, Vite and Supabase. This project provides user authentication, creation of short links (with optional custom slugs), QR code storage, and analytics (clicks by device and location).
 
